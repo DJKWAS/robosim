@@ -10,6 +10,8 @@
 #include <QButtonGroup>
 #include <QDir>
 
+#include<QDebug>
+
 static QString get_user_path()
 {
     QString qpath = QDir::homePath();
@@ -27,6 +29,7 @@ static QString get_user_path()
     if( dir.exists( qpath ) == false )
         dir.mkdir( qpath );
 
+    qDebug() << qpath;
     return qpath;
 }
 
@@ -60,6 +63,7 @@ MainWindow::MainWindow( QWidget *parent ) :
     }
 
     load( get_user_path() + "autosave.dat" );
+
 }
 
 MainWindow::~MainWindow()
