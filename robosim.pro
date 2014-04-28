@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     dummyalgorithm.cpp \
     routingalgorithmregistry.cpp \
     simulation.cpp \
-    robot.cpp
+    robot.cpp \
+    potentialfieldalgorithm.cpp
 
 HEADERS  += mainwindow.h \
     scenewidget.h \
@@ -27,6 +28,7 @@ HEADERS  += mainwindow.h \
     routingalgorithmregistry.h \
     simulation.h \
     array2d.h \
-    robot.h
+    robot.h \
+    potentialfieldalgorithm.h
 
 FORMS    += mainwindow.ui
