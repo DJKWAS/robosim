@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,7 +19,10 @@ SOURCES += main.cpp\
     routingalgorithmregistry.cpp \
     simulation.cpp \
     robot.cpp \
-    potentialfieldalgorithm.cpp
+    potentialfieldalgorithm.cpp \
+    qcustomplot.cpp \
+    plot.cpp \
+    signaltoplot.cpp
 
 HEADERS  += mainwindow.h \
     scenewidget.h \
@@ -29,6 +33,10 @@ HEADERS  += mainwindow.h \
     simulation.h \
     array2d.h \
     robot.h \
-    potentialfieldalgorithm.h
+    potentialfieldalgorithm.h \
+    qcustomplot.h \
+    plot.h \
+    signaltoplot.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    plot.ui

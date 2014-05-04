@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include <QPointF>
+#include <QDebug>
 
 
 static const StaticAlgorithmRegistration registrar( "PotentialField", [](){
@@ -12,6 +13,11 @@ static const StaticAlgorithmRegistration registrar( "PotentialField", [](){
 
 PotentialFieldAlgorithm::PotentialFieldAlgorithm()
 {
+    PotFieldPlot = new Plot();
+    PotFieldPlot->show();
+
+    PotFieldPlot->registerSignalToPlot("Angle");
+
 }
 
 PotentialFieldAlgorithm::~PotentialFieldAlgorithm()
@@ -26,6 +32,8 @@ void PotentialFieldAlgorithm::initialize( const Robot& robot )
 float PotentialFieldAlgorithm::run( const Robot& robot, const float elapsed )
 {
     const float ksi = 1;
+    static float time = -elapsed;
+    static float lastTime = -0.5;
 
     QPointF robPos(robot.x() + robot.frac_x(), robot.y() + robot.frac_y());
 
@@ -38,9 +46,9 @@ float PotentialFieldAlgorithm::run( const Robot& robot, const float elapsed )
 
 
     QPointF Frepul(0,0);
-    for(int y=0; y < robot.obstacle_map().height(); y++)
+    for(unsigned int y=0; y < robot.obstacle_map().height(); y++)
     {
-        for(int x=0; x < robot.obstacle_map().width(); x++)
+        for(unsigned int x=0; x < robot.obstacle_map().width(); x++)
         {
             if (robot.obstacle_map().at(x,y) == ObstacleType::Wall )
                     // ||robot.obstacle_map().at(x,y) == ObstacleType::Robot)
@@ -56,22 +64,14 @@ float PotentialFieldAlgorithm::run( const Robot& robot, const float elapsed )
 
     const float angle = atan2f( Fres.y(), Fres.x() );
 
+    time += elapsed;
+    if (time - lastTime > 0.05)
+    {
+        PotFieldPlot->addData("Angle",QPointF(time,angle));
+        lastTime = time;
+    }
+
+
     return angle;
 
-
-//    const float x = robot.x() + robot.frac_x();
-//    const float y = robot.y() + robot.frac_y();
-
-//    const float goal_x = robot.goal_x() + 0.5f;
-//    const float goal_y = robot.goal_y() + 0.5f;
-
-//    const float dx = goal_x - x;
-//    const float dy = goal_y - y;
-
-//const float angle = atan2f( dy, dx );
-
-
-
-//    return angle;
-//   return -1;
 }
