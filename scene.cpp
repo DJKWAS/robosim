@@ -4,7 +4,7 @@
 
 #include <assert.h>
 #include <string.h>
-#include <math.h>
+#include <qmath.h>
 
 Scene::Scene( const unsigned width, const unsigned height ) :
     m_obstacle_map( width, height ),

@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     potentialfieldalgorithm.cpp \
     qcustomplot.cpp \
     plot.cpp \
-    signaltoplot.cpp
+    signaltoplot.cpp \
+    potentialfieldalgorithdynamic.cpp
 
 HEADERS  += mainwindow.h \
     scenewidget.h \
@@ -36,7 +37,8 @@ HEADERS  += mainwindow.h \
     potentialfieldalgorithm.h \
     qcustomplot.h \
     plot.h \
-    signaltoplot.h
+    signaltoplot.h \
+    potentialfieldalgorithdynamic.h
 
 FORMS    += mainwindow.ui \
     plot.ui

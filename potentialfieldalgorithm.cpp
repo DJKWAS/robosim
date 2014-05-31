@@ -50,7 +50,7 @@ float PotentialFieldAlgorithm::run( const Robot& robot, const float elapsed )
     {
         for(unsigned int x=0; x < robot.obstacle_map().width(); x++)
         {
-            if (robot.obstacle_map().at(x,y) == ObstacleType::Wall )
+            if (robot.obstacle_map().at(x,y) != ObstacleType::None )
                     // ||robot.obstacle_map().at(x,y) == ObstacleType::Robot)
             {
               QPointF obstPos(x + 0.5f,y + 0.5f);
